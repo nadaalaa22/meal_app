@@ -5,6 +5,7 @@ import '../pages/meal_page.dart';
 
 class Category extends StatelessWidget {
   final int index;
+  //10
 
   Category({super.key, required this.index});
 

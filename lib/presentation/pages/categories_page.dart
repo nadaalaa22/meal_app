@@ -22,6 +22,7 @@ class CategoriesPage extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 8,
               ),
+              //index = 10
               itemBuilder: (BuildContext context, int index) =>Category(index: index,),
               itemCount: mealsCategory.length,
             ),

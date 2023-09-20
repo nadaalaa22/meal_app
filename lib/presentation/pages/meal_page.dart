@@ -7,6 +7,8 @@ import '../widgets/meal_item.dart';
 class MealPage extends StatelessWidget {
   const MealPage({Key? key, required this.index}) : super(key: key);
   final int index ;
+  //4
+  //10
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,9 @@ class MealPage extends StatelessWidget {
 
       ),
       body: ListView.separated(
-          itemBuilder: (_, i) => MealGridTile(index: index,id: i,),
+
+        //hh
+          itemBuilder: (_, i) => MealGridTile(index: index),
           separatorBuilder: (_, i) => SizedBox(height: 0,),
           itemCount: summerMeals.length),
     );

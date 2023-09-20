@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../data/datasource/meals_data.dart';
+import '../pages/ingredients_page.dart';
 
 class MealGridTile extends StatelessWidget {
   final int index;
-  final int id;
+  //4
+  //10
 
-  MealGridTile({super.key, required this.index, required this.id});
+   //3
+  MealGridTile({super.key, required this.index, });
   listName(int index) {
     switch (index) {
       case 0:
@@ -119,7 +122,7 @@ class MealGridTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          //  Navigator.push(context, MaterialPageRoute(builder: (context) => PetInfo(index:index)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MealInfoPage(index:index)));
         },
         child: Container(
           width: double.infinity,
@@ -135,7 +138,7 @@ class MealGridTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            listName(id),
+                            listName(index),
                             style: TextStyle(color: Colors.white, fontSize: 24),
                           ),
                           Row(
@@ -146,7 +149,7 @@ class MealGridTile extends StatelessWidget {
                                 color: Colors.white,
                               ),
                               Text(
-                               listTime(id),
+                               listTime(index),
                                 style:
                                 TextStyle(color: Colors.white, fontSize: 24),
                               ),
@@ -156,7 +159,7 @@ class MealGridTile extends StatelessWidget {
                                 color: Colors.white,
                               ),
                               Text(
-                                listState(id),
+                                listState(index),
                                 style:
                                 TextStyle(color: Colors.white, fontSize: 24),
                               ),
@@ -165,7 +168,7 @@ class MealGridTile extends StatelessWidget {
                         ],
                       ))),
               child: Image.network(
-               listImage(id),
+               listImage(index),
                 fit: BoxFit.cover,
               ),
             ),
