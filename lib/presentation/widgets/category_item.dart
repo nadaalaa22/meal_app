@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../data/datasource/category_data.dart';
+import '../../data/datasource/meals_data.dart';
+import '../../data/models/category.dart';
+import '../../data/models/meal.dart';
 import '../pages/meal_page.dart';
 
 class Category extends StatelessWidget {
@@ -15,7 +18,7 @@ class Category extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-           Navigator.push(context, MaterialPageRoute(builder: (context) => MealPage(index: index, )));
+           Navigator.push(context, MaterialPageRoute(builder: (context) => MealPage(id: mealsCategory[index].id, )));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),

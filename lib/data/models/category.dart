@@ -1,6 +1,6 @@
 class MealCategory {
-  final String id, name;
-  final int color ;
+  final String  name;
+  final int color ,id;
 
   MealCategory(this.id, this.name, this.color);
 }

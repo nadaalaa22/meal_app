@@ -1,119 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../../data/datasource/meals_data.dart';
+import '../../data/models/meal.dart';
 import '../pages/ingredients_page.dart';
 
 class MealGridTile extends StatelessWidget {
   final int index;
+  final int id ;
+  final Meal meal ;
   //4
   //10
 
    //3
-  MealGridTile({super.key, required this.index, });
-  listName(int index) {
-    switch (index) {
-      case 0:
-        return italianMeals[index].name;
-      case 1:
-        return quickMeals[index].name;
-      case 2:
-        return hamburgerMeals[index].name;
-      case 3:
-        return germanMeals[index].name;
-      case 4:
-        return lightMeals[index].name;
-      case 5:
-        return exoticMeals[index].name;
-      case 6:
-        return breakfastMeals[index].name;
-      case 7:
-        return asionMeals[index].name;
-      case 8:
-        return frenchMeals[index].name;
-      case 9:
-        return summerMeals[index].name;
-      default:
-        return "Unknown Item";
-    }
-  }
-  listTime(int index) {
-    switch (index) {
-      case 0:
-        return italianMeals[index].time;
-      case 1:
-        return quickMeals[index].time;
-      case 2:
-        return hamburgerMeals[index].time;
-      case 3:
-        return germanMeals[index].time;
-      case 4:
-        return lightMeals[index].time;
-      case 5:
-        return exoticMeals[index].time;
-      case 6:
-        return breakfastMeals[index].time;
-      case 7:
-        return asionMeals[index].time;
-      case 8:
-        return frenchMeals[index].time;
-      case 9:
-        return summerMeals[index].time;
-      default:
-        return "Unknown Item";
-    }
-  }
-  listState(int index) {
-    switch (index) {
-      case 0:
-        return italianMeals[index].state;
-      case 1:
-        return quickMeals[index].state;
-      case 2:
-        return hamburgerMeals[index].state;
-      case 3:
-        return germanMeals[index].state;
-      case 4:
-        return lightMeals[index].state;
-      case 5:
-        return exoticMeals[index].state;
-      case 6:
-        return breakfastMeals[index].state;
-      case 7:
-        return asionMeals[index].state;
-      case 8:
-        return frenchMeals[index].state;
-      case 9:
-        return summerMeals[index].state;
-      default:
-        return "Unknown Item";
-    }
-  }
-  listImage(int index) {
-    switch (index) {
-      case 0:
-        return italianMeals[index].imageUrl;
-      case 1:
-        return quickMeals[index].imageUrl;
-      case 2:
-        return hamburgerMeals[index].imageUrl;
-      case 3:
-        return germanMeals[index].imageUrl;
-      case 4:
-        return lightMeals[index].imageUrl;
-      case 5:
-        return exoticMeals[index].imageUrl;
-      case 6:
-        return breakfastMeals[index].imageUrl;
-      case 7:
-        return asionMeals[index].imageUrl;
-      case 8:
-        return frenchMeals[index].imageUrl;
-      case 9:
-        return summerMeals[index].imageUrl;
-      default:
-        return "Unknown Item";
-    }
-  }
+  MealGridTile({super.key, required this.index, required this.id, required this.meal, });
+
 
 
   @override
@@ -122,7 +22,7 @@ class MealGridTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MealInfoPage(index:index)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MealInfoPage(index:index, meal: meal,)));
         },
         child: Container(
           width: double.infinity,
@@ -138,7 +38,7 @@ class MealGridTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            listName(index),
+                            meal.name,
                             style: TextStyle(color: Colors.white, fontSize: 24),
                           ),
                           Row(
@@ -149,7 +49,7 @@ class MealGridTile extends StatelessWidget {
                                 color: Colors.white,
                               ),
                               Text(
-                               listTime(index),
+                               meal.time,
                                 style:
                                 TextStyle(color: Colors.white, fontSize: 24),
                               ),
@@ -159,7 +59,7 @@ class MealGridTile extends StatelessWidget {
                                 color: Colors.white,
                               ),
                               Text(
-                                listState(index),
+                                meal.state,
                                 style:
                                 TextStyle(color: Colors.white, fontSize: 24),
                               ),
@@ -168,7 +68,7 @@ class MealGridTile extends StatelessWidget {
                         ],
                       ))),
               child: Image.network(
-               listImage(index),
+               meal.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),

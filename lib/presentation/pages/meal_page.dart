@@ -5,8 +5,9 @@ import 'package:meals_app/data/datasource/meals_data.dart';
 import '../widgets/meal_item.dart';
 
 class MealPage extends StatelessWidget {
-  const MealPage({Key? key, required this.index}) : super(key: key);
-  final int index ;
+  const MealPage({Key? key, required this.id}) : super(key: key);
+
+  final int id;
   //4
   //10
 
@@ -17,15 +18,15 @@ class MealPage extends StatelessWidget {
       appBar: AppBar(
        // backgroundColor: Colors.black54,
         backgroundColor: Colors.grey,
-        title: Text(mealsCategory[5].name,style: TextStyle(color: Colors.white),),
+        title: Text(mealsCategory[id].name,style: TextStyle(color: Colors.black),),
 
       ),
       body: ListView.separated(
 
         //hh
-          itemBuilder: (_, i) => MealGridTile(index: index),
+          itemBuilder: (_, i) => MealGridTile(index: i ,id:  id,meal: Meals.where((m) => m.id == id).toList()[i],),
           separatorBuilder: (_, i) => SizedBox(height: 0,),
-          itemCount: summerMeals.length),
+          itemCount: 3),
     );
 
   }
