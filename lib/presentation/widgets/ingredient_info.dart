@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../data/models/favorite.dart';
 import '../../data/models/meal.dart';
 
 class MealInformation extends StatelessWidget {
   final Meal mealInfo;
 
-  const MealInformation({super.key, required this.mealInfo});
+  const MealInformation({
+    super.key,
+    required this.mealInfo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +22,23 @@ class MealInformation extends StatelessWidget {
           ' ${mealInfo.name}',
           style: const TextStyle(color: Colors.white),
         ),
+        actions: [
+          Consumer<FavoriteMealsModel>(
+            builder: (context, favoriteModel, child) {
+              final isFavorite = favoriteModel.favoriteMeals.contains(mealInfo);
+              return IconButton(
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  final favoriteModel = Provider.of<FavoriteMealsModel>(context, listen: false);
+                  favoriteModel.toggleFavorite(mealInfo);
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

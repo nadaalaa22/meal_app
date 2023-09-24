@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../data/datasource/meals_data.dart';
 import '../../data/models/meal.dart';
 import '../pages/ingredients_page.dart';
 
@@ -10,8 +8,7 @@ class MealGridTile extends StatelessWidget {
   final Meal meal ;
   //4
   //10
-
-   //3
+  //3
   MealGridTile({super.key, required this.index, required this.id, required this.meal, });
 
 
