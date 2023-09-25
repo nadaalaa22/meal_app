@@ -109,11 +109,9 @@ class _MealPageState extends State<MealPage> {
                 id: widget.id,
                 meal: Meals.where((m) => m.id == widget.id).toList()[i],),
           separatorBuilder: (_, i) => SizedBox(height: 0,),
-          itemCount: 3),
+          itemCount: Meals.where((m) => m.id == widget.id).toList().length),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showAddCategoryBottomSheet(context);
-        },
+        onPressed: () => _showAddCategoryBottomSheet(context),
         child: Icon(Icons.add, color: Colors.white,),
       ),
     );

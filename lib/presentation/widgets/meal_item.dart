@@ -19,7 +19,7 @@ class MealGridTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MealInfoPage(index:index, meal: meal,)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MealInfoPage(meal: meal,)));
         },
         child: Container(
           width: double.infinity,
