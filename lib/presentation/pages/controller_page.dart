@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'categories_page.dart';
 import 'favorite_page.dart';
 
-class SwitchPage extends StatefulWidget {
-  const SwitchPage({Key? key}) : super(key: key);
+class ControllerPage extends StatefulWidget {
+  const ControllerPage({Key? key}) : super(key: key);
 
   @override
-  State<SwitchPage> createState() => _SwitchPageState();
+  State<ControllerPage> createState() => _ControllerPageState();
 }
 
-class _SwitchPageState extends State<SwitchPage> {
+class _ControllerPageState extends State<ControllerPage> {
   int currentIndex = 0;
 
   @override
@@ -19,14 +19,14 @@ class _SwitchPageState extends State<SwitchPage> {
 
       body: IndexedStack(
         index: currentIndex,
-        children: [
-          // الصفحة الأولى: CategoriesPage
+        children: const [
+
           CategoriesPage(),
 
-          // الصفحة الثانية: FavoritesPage
           FavoritePage(),
         ],
       ),
+      //TODO
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (value) {

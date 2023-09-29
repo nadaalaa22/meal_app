@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../data/models/favorite.dart';
-import '../widgets/meal_item.dart';
-import 'ingredients_page.dart';
 
+import '../../data/datasource/meals_data.dart';
+import '../widgets/meal_item.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({Key? key}) : super(key: key);
@@ -11,29 +9,29 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       appBar: AppBar(
-        backgroundColor: Colors.grey,
-        title: Text('FAVORITE',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+        backgroundColor: Colors.purple,
+        title: const Text(
+          'FAVORITE',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
+        ),
+
         leading: IconButton(
-          onPressed: (){
+          icon: const Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.white,
+          ),
+          onPressed: () {
             Navigator.pop(context);
-          }, icon: Icon( Icons.arrow_back),
+          },
         ),
       ),
-      body: Consumer<FavoriteMealsModel>(
-        builder: (context, favoriteModel, child) {
-          final favoriteMeals = favoriteModel.favoriteMeals;
-          return ListView.builder(
-            itemCount: favoriteMeals.length,
-            itemBuilder: (context, index) {
-              final meal = favoriteMeals[index];
-              return MealGridTile(
-                index: index,
-                id: meal.id,
-                meal: meal,
-              );
-            },
+      body: ListView.builder(
+        itemCount: meals.where((m) => m.isFavorite == true).toList().length,
+        itemBuilder: (_, i) {
+          return MealGridTile(
+            meal: meals.where((m) => m.isFavorite == true).toList()[i],
           );
         },
       ),

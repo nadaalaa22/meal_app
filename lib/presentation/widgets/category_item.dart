@@ -9,7 +9,7 @@ import '../pages/meal_page.dart';
 class Category extends StatelessWidget {
   final int index;
   //10
-
+// object
   Category({super.key, required this.index});
 
   @override

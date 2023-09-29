@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../data/models/favorite.dart';
 import '../../data/models/meal.dart';
 
-class MealInformation extends StatelessWidget {
+class MealInformation extends StatefulWidget {
   final Meal mealInfo;
 
   const MealInformation({
@@ -13,45 +11,54 @@ class MealInformation extends StatelessWidget {
   });
 
   @override
+  State<MealInformation> createState() => _MealInformationState();
+}
+
+class _MealInformationState extends State<MealInformation> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.6),
       appBar: AppBar(
-        backgroundColor: Colors.black.withOpacity(0.5),
+        backgroundColor: Colors.purple,
         title: Text(
-          ' ${mealInfo.name}',
+          ' ${widget.mealInfo.name}',
           style: const TextStyle(color: Colors.white),
         ),
-        actions: [
-          Consumer<FavoriteMealsModel>(
-            builder: (context, favoriteModel, child) {
-              final isFavorite = favoriteModel.favoriteMeals.contains(mealInfo);
-              return IconButton(
-                icon: Icon(
-                  isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  final favoriteModel = Provider.of<FavoriteMealsModel>(context, listen: false);
-                  favoriteModel.toggleFavorite(mealInfo);
-                },
-              );
-            },
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              widget.mealInfo.isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Colors.white,
+            ),
+            onPressed: () {
+             setState(() {
+               widget.mealInfo.isFavorite = !widget.mealInfo.isFavorite;
+             });
+            },
+          )
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
                 width: double.infinity,
                 child: Image(
-                  image: NetworkImage(mealInfo.imageUrl),
+                  image: NetworkImage(widget.mealInfo.imageUrl),
                   fit: BoxFit.cover,
                 )),
             Text(
-              'Name : ${mealInfo.name}',
+              'Name : ${widget.mealInfo.name}',
               style: const TextStyle(color: Colors.orange, fontSize: 24),
             ),
             const Text(
@@ -60,27 +67,27 @@ class MealInformation extends StatelessWidget {
             ),
             const Text(
               '4 chicken breasts  ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               '1 onion  ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               '2 glovis of garlic  ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               '1 piece of ginger ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               '500ml cocount milk ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               '1 onion  ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               'Steps ',
@@ -88,11 +95,11 @@ class MealInformation extends StatelessWidget {
             ),
             const Text(
               'Slice and fry the chicken breast',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             const Text(
               '500ml cocount milk ',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
           ],
         ),

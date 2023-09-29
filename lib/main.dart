@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/presentation/pages/categories_page.dart';
-import 'package:provider/provider.dart';
-
-import 'data/models/favorite.dart';
-import 'presentation/pages/meal_page.dart';
-import 'presentation/pages/switch_page.dart';
+import 'presentation/pages/controller_page.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => FavoriteMealsModel(), // قم بتكوين الموديل
-      child: MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -43,7 +35,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:SwitchPage()
+        home:const ControllerPage()
     );
   }
 }
