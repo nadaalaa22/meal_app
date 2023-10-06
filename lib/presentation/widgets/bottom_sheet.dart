@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../data/datasource/categories_local_datasource/category_local_datasource.dart';
 import '../../data/datasource/category_data.dart';
 import '../../data/datasource/meals_data.dart';
 import '../../data/models/category.dart';
@@ -116,15 +117,17 @@ class MealCategoryBottomSheet extends StatefulWidget {
                 height: 10,
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (titleControl.text.isNotEmpty) {
-                    final MealCategory meal = MealCategory(
+                    final Categories meal = Categories(
                       int.parse(idControl.text),
                       titleControl.text,
                       0xff32a852,
                     );
-                    mealsCategory.add(meal);
-                    setStateCallback;
+                  await  CategoryDataImp().setCategoryData(meal);
+                  await  CategoryDataImp().getCategoriesData().then((value) => print(value));
+                    // mealsCategory.add(meal);
+                    // setStateCallback;
                     Navigator.pop(context);
                   }
 

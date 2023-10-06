@@ -1,6 +1,10 @@
-class MealCategory {
+class Categories {
   final String  name;
   final int color ,id;
 
-  MealCategory(this.id, this.name, this.color);
+  Categories(this.id, this.name, this.color);
+  Map toMap() => {'name': name, 'color': color, 'id': id};
+
+  factory Categories.fromMap(Map map) =>
+      Categories( map['name'], map['color'], map['id']);
 }

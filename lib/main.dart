@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'presentation/pages/controller_page.dart';
-
+import 'package:meals_app/presentation/pages/controller_page.dart';
 void main() {
   runApp(
     const MyApp(),
