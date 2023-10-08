@@ -1,10 +1,10 @@
-class Categories {
-  final String  name;
-  final int color ,id;
+class CategoryDataa {
+  final String  name , color , id ;
 
-  Categories(this.id, this.name, this.color);
+
+  CategoryDataa( this.name, this.color,this.id,);
   Map toMap() => {'name': name, 'color': color, 'id': id};
 
-  factory Categories.fromMap(Map map) =>
-      Categories( map['name'], map['color'], map['id']);
+  factory CategoryDataa.fromMap(Map map) =>
+      CategoryDataa( map['name'], map['color'], map['id']);
 }

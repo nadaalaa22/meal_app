@@ -71,7 +71,7 @@ class MealGridTile extends StatelessWidget {
                     ],
                   ))),
               child: Image.network(
-                meal.imageUrl,
+                'https://www.shutterstock.com/shutterstock/photos/1010843569/display_1500/stock-photo-fettuccine-pasta-italian-cuisine-1010843569.jpg',
                 fit: BoxFit.cover,
               ),
             ),

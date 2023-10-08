@@ -6,10 +6,10 @@ import '../../data/models/category.dart';
 import '../../data/models/meal.dart';
 import '../pages/meal_page.dart';
 
-class Category extends StatelessWidget {
-  final int index;
+class CategoryItem extends StatelessWidget {
+  final CategoryDataa categoryDataa ;
 
-  Category({super.key, required this.index});
+  CategoryItem({super.key, required this.categoryDataa});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Category extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-           Navigator.push(context, MaterialPageRoute(builder: (context) => MealPage(id: mealsCategory[index].id, )));
+           Navigator.push(context, MaterialPageRoute(builder: (context) => MealPage(id:categoryDataa.id )));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
@@ -25,11 +25,11 @@ class Category extends StatelessWidget {
             child: Container(
               width: 150,
               height: 150,
-              color: Color(mealsCategory[index].color),
+              color: Color(0xffCBC3E3),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  mealsCategory[index].name,
+                  categoryDataa.name,
                   style: TextStyle(color: Colors.white, fontSize: 24),
                 ),
               ),
