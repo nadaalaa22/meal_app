@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../models/category.dart';
+import '../model/category.dart';
 
 abstract class CategoryData {
   ///add Category data to [sharedPreference]

@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:meals_app/data/models/meal.dart';
+
+import 'package:meals_app/category/data/models/meal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class MealData {
