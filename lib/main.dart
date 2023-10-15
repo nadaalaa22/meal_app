@@ -1,9 +1,24 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meals_app/category/presentation/bloc/category_bloc.dart';
+import 'package:meals_app/meal/presentation/bloc/meal_bloc.dart';
 
 import 'category/presentation/pages/controller_page.dart';
+
 void main() {
   runApp(
-    const MyApp(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CategoryBloc(),
+        ),
+        BlocProvider(
+          create: (context) => MealBloc(),
+        ),
+      ],
+      child: MyApp(),
+    ),
   );
 }
 
@@ -35,7 +50,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:const ControllerPage()
+        home: const ControllerPage()
     );
   }
 }

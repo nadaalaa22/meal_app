@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:meals_app/category/data/models/meal.dart';
+import 'package:meals_app/meal/data/model/meal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class MealData {
@@ -19,10 +19,6 @@ abstract class MealData {
   /// throw an error
   Future<void> toggleMealFavorite(String mealID);
 
-  ///get [all] [ favorite ] [meal] from  [sharedPreference]
-  ///
-  /// throw an error
-  Future<List<Meal>> getFavoriteMeals();
 
 }
 
@@ -76,17 +72,6 @@ class MealDataImp implements MealData {
     }
   }
 
-  @override
-  Future<List<Meal>> getFavoriteMeals() async {
-    final meals = await getMeals();
-    List<Meal> favoriteMeals = [];
-    for (int i = 0; i < meals.length; i++) {
-      if (meals[i].isFavorite == true) {
-        favoriteMeals.add(meals[i]);
-      }
-    }
-    return favoriteMeals;
-  }
 
 
 
